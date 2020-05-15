@@ -1,0 +1,14 @@
+# View the kubectl config
+kubectl config view
+
+# Change the current context
+kubectl config use-context my-context
+
+# Delete cluster from kubectl config
+kubectl config delete-cluster my-cluster
+
+# Delete context from kubectl config
+kubectl config delete-context my-cluster-context
+
+# Remove user from kubectl config
+kubectl config unset users.my-cluster-admin
