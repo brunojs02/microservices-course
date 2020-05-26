@@ -13,3 +13,9 @@ it("get authenticated user informations", async () => {
 
   expect(response.body.currentUser.email).toEqual(email);
 });
+
+it("responds with null if the user is not authenticated", async () => {
+  const response = await request(app).get("/api/users/currentuser").expect(200);
+
+  expect(response.body.currentUser).toBeUndefined();
+});
