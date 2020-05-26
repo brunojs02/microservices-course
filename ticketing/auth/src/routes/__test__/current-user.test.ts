@@ -15,7 +15,10 @@ it("get authenticated user informations", async () => {
 });
 
 it("responds with null if the user is not authenticated", async () => {
-  const response = await request(app).get("/api/users/currentuser").expect(200);
+  const response = await request(app)
+    .get("/api/users/currentuser")
+    .send()
+    .expect(200);
 
   expect(response.body.currentUser).toBeUndefined();
 });
