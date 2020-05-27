@@ -1,0 +1,1 @@
+export default () => <h1>Welcome to next</h1>;
