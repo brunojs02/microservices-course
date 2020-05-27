@@ -1,11 +1,19 @@
 import { useState } from "react";
+import { useApi } from "../../../hooks/use-api";
+import ErrorMessage from "../../../components/ErrorMessage";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [{ errors }, doRequest] = useApi({
+    path: "/api/users/signup",
+    method: "post",
+    body: { email, password },
+  });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    doRequest();
   };
 
   return (
@@ -31,6 +39,7 @@ const SignUp = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            <ErrorMessage errors={errors} />
             <button type="submit" className="btn btn-primary">
               Sign Up
             </button>
