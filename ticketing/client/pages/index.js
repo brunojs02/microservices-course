@@ -1,9 +1,12 @@
+import Head from "next/head";
 import api from "../utils/api";
 
 const Index = ({ currentUser }) => (
   <>
-    <h1>Welcome to next</h1>
-    <p>{JSON.stringify(currentUser)}</p>
+    <Head>
+      <title>Ticketing</title>
+    </Head>
+    <h1>{currentUser ? "You are logged in" : "You are not logged in"}</h1>
   </>
 );
 
