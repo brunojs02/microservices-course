@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState } from "react";
+import api from "../utils/api";
 
 const useApi = ({ path, method = "get", body }) => {
   const [data, setData] = useState(null);
@@ -7,7 +7,8 @@ const useApi = ({ path, method = "get", body }) => {
 
   const doRequest = () => {
     setErrors(null);
-    axios[method](path, body)
+    api()
+      [method](path, body)
       .then(({ data }) => setData(data))
       .catch(({ response }) => setErrors(response.data.errors));
   };
