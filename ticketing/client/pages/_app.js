@@ -1,3 +1,22 @@
 import "bootstrap/dist/css/bootstrap.css";
+import buildApi from "../utils/api";
 
-export default ({ Component, pageProps }) => <Component {...pageProps} />;
+const App = ({ Component, pageProps, currentUser }) => (
+  <>
+    <Component {...pageProps} currentUser={currentUser} />
+  </>
+);
+
+App.getInitialProps = async ({ ctx, Component }) => {
+  const api = buildApi(ctx);
+  const { data } = await api.get("/api/users/currentuser");
+  let pageProps = {};
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps();
+  }
+
+  return { pageProps, ...data };
+};
+
+export default App;
