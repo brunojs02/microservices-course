@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Router from "next/router";
 import { useApi } from "../../../hooks/use-api";
 import ErrorMessage from "../../../components/ErrorMessage";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [{ errors }, doRequest] = useApi({
+  const [{ data, errors }, doRequest] = useApi({
     path: "/api/users/signup",
     method: "post",
     body: { email, password },
@@ -15,6 +16,10 @@ const SignUp = () => {
     e.preventDefault();
     doRequest();
   };
+
+  useEffect(() => {
+    if (data) Router.push("/");
+  }, [data]);
 
   return (
     <div className="container">
