@@ -457,6 +457,19 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@mscticketing/common@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@mscticketing/common/-/common-0.0.3.tgz#1fa5b11875986c9fc3f9f74da13cfe4cc2acc3cf"
+  integrity sha512-8wqB1qD6o2VjaHSNS07KY/QwKaq9FQEnJ+0AJeQIrWPP87doQopVqOmhHDCqoV5kyeORWDOz5XRVAWbL7u9z9A==
+  dependencies:
+    "@types/cookie-session" "^2.0.40"
+    "@types/express" "^4.17.6"
+    "@types/jsonwebtoken" "^8.5.0"
+    cookie-session "^1.4.0"
+    express "^4.17.1"
+    express-validator "^6.5.0"
+    jsonwebtoken "^8.5.1"
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.0.tgz#c8d68821a854c555bba172f3b06959a0039b236d"
@@ -535,6 +548,14 @@
   version "2.0.39"
   resolved "https://registry.yarnpkg.com/@types/cookie-session/-/cookie-session-2.0.39.tgz#c033f5fcead0b3a811a08f18e4a62fcb040fea97"
   integrity sha512-Y35+TImpAvTAGswU89WuoWIioHUnbEgwFsR09ZC8n9qugEL18UVyIgQ0GvokspUnsWDoNtzQXD6hhDOGau38Rw==
+  dependencies:
+    "@types/express" "*"
+    "@types/keygrip" "*"
+
+"@types/cookie-session@^2.0.40":
+  version "2.0.40"
+  resolved "https://registry.yarnpkg.com/@types/cookie-session/-/cookie-session-2.0.40.tgz#74b859066224e9feea772f38d070290873999a7d"
+  integrity sha512-oM0bN729kwy6TEUp0s1m3kME4NUaQTR4xuixRNvUhrgvDDHqsn4+RoTsSEE2m1f2m4nqoxqfAbV5L617wIQthA==
   dependencies:
     "@types/express" "*"
     "@types/keygrip" "*"
@@ -1760,6 +1781,14 @@ express-validator@^6.4.1:
   dependencies:
     lodash "^4.17.15"
     validator "^12.1.0"
+
+express-validator@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.5.0.tgz#0cfb3a94f902b75c597372ac91c7dfb267c5c221"
+  integrity sha512-kXi99TuVeLWkxO0RtDOSj56T7YR0H5KZZyhtzoPSZ5TffBvrJpZPSp/frYcT/zVoLhH8NXDk+T0LCSeI6TbOGA==
+  dependencies:
+    lodash "^4.17.15"
+    validator "^13.0.0"
 
 express@^4.17.1:
   version "4.17.1"
@@ -4811,6 +4840,11 @@ validator@^12.1.0:
   version "12.2.0"
   resolved "https://registry.yarnpkg.com/validator/-/validator-12.2.0.tgz#660d47e96267033fd070096c3b1a6f2db4380a0a"
   integrity sha512-jJfE/DW6tIK1Ek8nCfNFqt8Wb3nzMoAbocBF6/Icgg1ZFSBpObdnwVY2jQj6qUqzhx5jc71fpvBWyLGO7Xl+nQ==
+
+validator@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-13.0.0.tgz#0fb6c6bb5218ea23d368a8347e6d0f5a70e3bcab"
+  integrity sha512-anYx5fURbgF04lQV18nEQWZ/3wHGnxiKdG4aL8J+jEDsm98n/sU/bey+tYk6tnGJzm7ioh5FoqrAiQ6m03IgaA==
 
 vary@~1.1.2:
   version "1.1.2"
