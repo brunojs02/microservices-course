@@ -1,5 +1,17 @@
 {
   "name": "@mscticketing/common",
-  "version": "0.0.1",
-  "main": "index.js"
+  "version": "0.0.2",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "files": [
+    "build/**/*"
+  ],
+  "scripts": {
+    "clean": "del ./build/*",
+    "build": "npm run clean && tsc"
+  },
+  "devDependencies": {
+    "del-cli": "^3.0.1",
+    "typescript": "^3.9.3"
+  }
 }
