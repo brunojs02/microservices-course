@@ -11,11 +11,18 @@ const App = ({ Component, pageProps, currentUser }) => (
 
 App.getInitialProps = async ({ ctx, Component }) => {
   const api = buildApi(ctx);
-  const { data } = await api.get("/api/users/currentuser");
+  let data;
+  try {
+    const response = await api.get("/api/users/currentuser");
+    data = response.data;
+  } catch {}
+
   let pageProps = {};
 
   if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps();
+    try {
+      pageProps = await Component.getInitialProps();
+    } catch {}
   }
 
   return { pageProps, ...data };
