@@ -1,5 +1,9 @@
-import { body } from "express-validator";
 import express, { Request, Response } from "express";
+import { body } from "express-validator";
+import {
+  NotFoundError,
+  NotAuthorizedError,
+} from "@mscticketing/common/build/errors";
 import {
   requireAuth,
   requestValidation,
@@ -8,8 +12,8 @@ import { Ticket } from "../models/ticket";
 
 const router = express.Router();
 
-router.post(
-  "/api/tickets",
+router.put(
+  "/api/tickets/:id",
   requireAuth,
   [
     body("title").not().isEmpty().withMessage("Title is requried"),
@@ -19,13 +23,21 @@ router.post(
   ],
   requestValidation,
   async (req: Request, res: Response) => {
-    const { body, currentUser } = req;
-    const { id: userId } = currentUser!;
+    const { body, params, currentUser } = req;
+    const { id } = params;
     const { title, price } = body;
-    const ticket = Ticket.build({ price, title, userId });
+    const { id: userId } = currentUser!;
+    const ticket = await Ticket.findById(id);
+
+    if (!ticket) throw new NotFoundError();
+
+    if (ticket.userId !== userId) throw new NotAuthorizedError();
+
+    ticket.set({ title, price });
     await ticket.save();
-    res.status(201).send(ticket);
+
+    res.send(ticket);
   }
 );
 
-export { router as createTicketRouter };
+export { router as updateTicketRouter };

@@ -10,6 +10,7 @@ import {
 import { showTicketRouter } from "./routes/show";
 import { createTicketRouter } from "./routes/new";
 import { indexTicketRouter } from "./routes/index";
+import { updateTicketRouter } from "./routes/update";
 
 const app = express();
 const secure = process.env.NODE_ENV !== "test";
@@ -22,6 +23,7 @@ app.use(currentUser);
 app.use(showTicketRouter);
 app.use(indexTicketRouter);
 app.use(createTicketRouter);
+app.use(updateTicketRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();

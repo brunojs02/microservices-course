@@ -3,8 +3,6 @@ import mongoose from "mongoose";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 
-import { app } from "../app";
-
 declare global {
   namespace NodeJS {
     interface Global {
@@ -41,7 +39,8 @@ afterAll(async () => {
 });
 
 global.signin = () => {
-  const payload = { id: "1236sdf23", email: "test@example.com" };
+  const userId = mongoose.Types.ObjectId().toHexString();
+  const payload = { id: userId, email: "test@example.com" };
   const token = jwt.sign(payload, process.env.JWT_KEY!);
   const sessionJSON = JSON.stringify({ jwt: token });
   const base64 = Buffer.from(sessionJSON).toString("base64");

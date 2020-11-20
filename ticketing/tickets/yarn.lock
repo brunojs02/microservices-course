@@ -457,10 +457,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@mscticketing/common@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@mscticketing/common/-/common-0.0.6.tgz#9f5c0ee124c61ba9c493b3496bee05f6a7515048"
-  integrity sha512-P4FNRiBFhnI6H8l2hfUjGdFYR5apqYWl327hFKi5aYYPYPQNKkUO27QtiZvMadFWeqfrE/VvEtoazaX5gHi96w==
+"@mscticketing/common@0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@mscticketing/common/-/common-0.0.9.tgz#fe9720a01a5e2d4864ad705448d86b74381a137a"
+  integrity sha512-rLiCnHke6rsIam+SYR5+KC8kD4UoKiXACbRmYtox8qXE2D1CI1sc0ZvoyCxNstzRDIViShA7/i8F4hxN+phjRg==
   dependencies:
     "@types/cookie-session" "^2.0.40"
     "@types/express" "^4.17.6"
