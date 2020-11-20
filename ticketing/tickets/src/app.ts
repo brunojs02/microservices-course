@@ -7,6 +7,7 @@ import {
   currentUser,
   errorHanlder,
 } from "@mscticketing/common/build/middlewares";
+import { showTicketRouter } from "./routes/show";
 import { createTicketRouter } from "./routes/new";
 
 const app = express();
@@ -17,6 +18,7 @@ app.set("trust proxy", true);
 app.use(json());
 app.use(cookieSession({ signed: false, secure }));
 app.use(currentUser);
+app.use(showTicketRouter);
 app.use(createTicketRouter);
 
 app.all("*", async () => {
