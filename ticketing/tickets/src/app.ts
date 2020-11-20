@@ -3,14 +3,21 @@ import { json } from "body-parser";
 import "express-async-errors";
 import cookieSession from "cookie-session";
 import { NotFoundError } from "@mscticketing/common/build/errors";
-import { errorHanlder } from "@mscticketing/common/build/middlewares";
+import {
+  currentUser,
+  errorHanlder,
+} from "@mscticketing/common/build/middlewares";
+import { createTicketRouter } from "./routes/new";
 
 const app = express();
+const secure = process.env.NODE_ENV !== "test";
+
 app.set("trust proxy", true);
+
 app.use(json());
-app.use(
-  cookieSession({ signed: false, secure: process.env.NODE_ENV !== "test" })
-);
+app.use(cookieSession({ signed: false, secure }));
+app.use(currentUser);
+app.use(createTicketRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
