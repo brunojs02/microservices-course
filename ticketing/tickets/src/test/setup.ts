@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-let mongo: any;
+let mongo: MongoMemoryServer;
 
 beforeAll(async () => {
   process.env.JWT_KEY = "jwt_key_test_purposes";
