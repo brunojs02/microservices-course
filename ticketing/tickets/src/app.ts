@@ -9,6 +9,7 @@ import {
 } from "@mscticketing/common/build/middlewares";
 import { showTicketRouter } from "./routes/show";
 import { createTicketRouter } from "./routes/new";
+import { indexTicketRouter } from "./routes/index";
 
 const app = express();
 const secure = process.env.NODE_ENV !== "test";
@@ -19,6 +20,7 @@ app.use(json());
 app.use(cookieSession({ signed: false, secure }));
 app.use(currentUser);
 app.use(showTicketRouter);
+app.use(indexTicketRouter);
 app.use(createTicketRouter);
 
 app.all("*", async () => {
