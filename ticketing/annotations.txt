@@ -12,3 +12,6 @@ kubectl config delete-context my-cluster-context
 
 # Remove user from kubectl config
 kubectl config unset users.my-cluster-admin
+
+#Foward a port from a pod
+kubectl port-forward pod machinePort:podPort
