@@ -40,25 +40,25 @@ it("returns a 400 if the user provieds and invalid title or price", async () => 
     .send({ title: "aslkdhas", price: 24 });
 
   await request(app)
-    .put(`/api/tickets/${ticket.id}`, ticket)
+    .put(`/api/tickets/${ticket.id}`)
     .set("Cookie", cookies)
     .send({ title: "", price: 25 })
     .expect(400);
 
   await request(app)
-    .put(`/api/tickets/${ticket.id}`, ticket)
+    .put(`/api/tickets/${ticket.id}`)
     .set("Cookie", cookies)
     .send({ price: 25 })
     .expect(400);
 
   await request(app)
-    .put(`/api/tickets/${ticket.id}`, ticket)
+    .put(`/api/tickets/${ticket.id}`)
     .set("Cookie", cookies)
     .send({ title: "updated title", price: -26 })
     .expect(400);
 
   await request(app)
-    .put(`/api/tickets/${ticket.id}`, ticket)
+    .put(`/api/tickets/${ticket.id}`)
     .set("Cookie", cookies)
     .send({ title: "updated title" })
     .expect(400);
@@ -75,7 +75,7 @@ it("updates the tickets with valid inputs", async () => {
   const newTitle = "updated title";
 
   await request(app)
-    .put(`/api/tickets/${ticket.id}`, ticket)
+    .put(`/api/tickets/${ticket.id}`)
     .set("Cookie", cookies)
     .send({ title: newTitle, price: newPrice })
     .expect(200);
