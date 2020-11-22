@@ -74,3 +74,5 @@ it("reserves a ticket even a order already exist but the status is cancelled", a
     .send({ ticketId: ticket.id })
     .expect(201);
 });
+
+it.todo("emits an order created event");
