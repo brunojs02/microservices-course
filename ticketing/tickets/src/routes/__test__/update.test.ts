@@ -96,14 +96,13 @@ it("publishes an event after update a ticket", async () => {
     .set("Cookie", cookies)
     .send({ title: "aslkdhas", price: 24 });
 
-  const newPrice = 32;
-  const newTitle = "updated title";
+  jest.clearAllMocks();
 
   await request(app)
     .put(`/api/tickets/${ticket.id}`)
     .set("Cookie", cookies)
-    .send({ title: newTitle, price: newPrice })
+    .send({ title: "updated title", price: 32 })
     .expect(200);
 
-  expect(natsWrapper.client.publish).toHaveBeenCalledTimes(2);
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });
