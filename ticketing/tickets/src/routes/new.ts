@@ -5,6 +5,8 @@ import {
   requestValidation,
 } from "@mscticketing/common/build/middlewares";
 import { Ticket } from "../models/ticket";
+import { natsWrapper } from "../nats-wrapper";
+import { TicketCreatedPublisher } from "../events/publishers/ticket-created-publisher";
 
 const router = express.Router();
 
@@ -24,6 +26,12 @@ router.post(
     const { title, price } = body;
     const ticket = Ticket.build({ price, title, userId });
     await ticket.save();
+    await new TicketCreatedPublisher(natsWrapper.client).publish({
+      id: ticket.id,
+      price: ticket.price,
+      title: ticket.title,
+      userId: ticket.userId,
+    });
     res.status(201).send(ticket);
   }
 );
