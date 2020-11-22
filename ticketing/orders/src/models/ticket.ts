@@ -30,7 +30,7 @@ const ticketSchema = new Schema(
   {
     toJSON: {
       versionKey: false,
-      transform: ({ _id, ...rest }) => ({ ...rest }),
+      transform: ({ _id: id, ...rest }) => ({ id, ...rest }),
     },
   }
 );
