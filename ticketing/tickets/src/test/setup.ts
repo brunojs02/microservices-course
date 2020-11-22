@@ -13,6 +13,8 @@ declare global {
 
 let mongo: MongoMemoryServer;
 
+jest.mock("../nats-wrapper.ts");
+
 beforeAll(async () => {
   process.env.JWT_KEY = "jwt_key_test_purposes";
 
@@ -26,6 +28,7 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
+  jest.clearAllMocks();
   const collections = await mongoose.connection.db.collections();
 
   for (let collection of collections) {
