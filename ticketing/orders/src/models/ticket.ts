@@ -36,6 +36,7 @@ const ticketSchema = new Schema(
 );
 
 ticketSchema.statics.build = (attrs: TicketAttrs) => new Ticket(attrs);
+
 ticketSchema.methods.isReserved = async function () {
   const existingOrder = await Order.findOne({
     ticket: this,

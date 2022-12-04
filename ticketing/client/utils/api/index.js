@@ -7,7 +7,8 @@ const buildApi = (ctx = {}) => {
   if (typeof window === "undefined") {
     return axios.create({
       headers,
-      baseURL: "http://ingress-nginx-controller.kube-system.svc.cluster.local",
+      // baseUrl: http://{deployment name}.{namespace}.svc.cluster.local
+      baseURL: "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
     });
   } else {
     return axios.create({ baseURL: "/" });
